@@ -6,8 +6,9 @@ import {
   PanResponderInstance,
   Platform,
   PlatformOSType,
+  StyleSheet,
   View,
-  StyleSheet
+  ViewStyle,
 } from 'react-native';
 import styles from './image-zoom.style';
 import { ICenterOn, Props, State } from './image-zoom.type';
@@ -650,6 +651,8 @@ export default class ImageViewer extends React.Component<Props, State> {
   }
 
   public render() {
+    const { scale } = this.props;
+
     const animateConf = {
       transform: [
         {
@@ -663,6 +666,19 @@ export default class ImageViewer extends React.Component<Props, State> {
         }
       ]
     };
+
+    const innerConf: ViewStyle = {
+      width: this.props.imageWidth,
+      height: this.props.imageHeight,
+    };
+
+    if (scale < 1 && scale > 0) {
+      innerConf.transform = [
+        { scale },
+        { translateX: - (1 - scale) * this.props.imageWidth / (scale * 2) },
+        { translateY: - (1 - scale) * this.props.imageHeight / (scale * 2) }
+      ];
+    }
 
     const parentStyles = StyleSheet.flatten(this.props.style);
 
@@ -684,7 +700,9 @@ export default class ImageViewer extends React.Component<Props, State> {
               height: this.props.imageHeight
             }}
           >
-            {this.props.children}
+            <View style={innerConf}>
+              {this.props.children}
+            </View>
           </View>
         </Animated.View>
       </View>

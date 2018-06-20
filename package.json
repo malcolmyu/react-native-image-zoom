@@ -6,7 +6,8 @@
   "types": "src/index.ts",
   "scripts": {
     "prepare": "rm -rf built && tsc",
-    "start": "tsc -w --outDir demo/built"
+    "start": "tsc -w --outDir demo/built",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
