@@ -232,7 +232,9 @@ export default class ImageViewer extends React.Component<Props, State> {
                 if (this.props.enableHorizontalBounce) {
                   this.positionX += diffX / this.scale;
                   this.animatedPositionX.setValue(this.positionX);
-                } else {
+                }
+                
+                if (true) {
                   // 如果图片宽度大图盒子宽度， 可以横向拖拽
                   // 没有溢出偏移量或者这次位移完全收回了偏移量才能拖拽
                   if (this.horizontalWholeOuterCounter > 0) {
@@ -700,9 +702,7 @@ export default class ImageViewer extends React.Component<Props, State> {
               height: this.props.imageHeight
             }}
           >
-            <View style={innerConf}>
-              {this.props.children}
-            </View>
+            {this.props.children}
           </View>
         </Animated.View>
       </View>
