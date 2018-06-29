@@ -1,6 +1,6 @@
 {
   "name": "@wnpm/react-native-image-pan-zoom",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "react native image pan zoom",
   "main": "built/index.js",
   "types": "src/index.ts",
