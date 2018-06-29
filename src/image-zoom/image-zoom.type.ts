@@ -104,8 +104,6 @@ export class Props {
    */
   public maxScale: number = 10;
 
-  public scale: number = 1;
-
   /**
    * 单击的回调
    */

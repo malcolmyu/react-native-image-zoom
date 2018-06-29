@@ -233,7 +233,7 @@ export default class ImageViewer extends React.Component<Props, State> {
                   this.positionX += diffX / this.scale;
                   this.animatedPositionX.setValue(this.positionX);
                 }
-                
+
                 if (true) {
                   // 如果图片宽度大图盒子宽度， 可以横向拖拽
                   // 没有溢出偏移量或者这次位移完全收回了偏移量才能拖拽
@@ -653,8 +653,6 @@ export default class ImageViewer extends React.Component<Props, State> {
   }
 
   public render() {
-    const { scale } = this.props;
-
     const animateConf = {
       transform: [
         {
@@ -668,19 +666,6 @@ export default class ImageViewer extends React.Component<Props, State> {
         }
       ]
     };
-
-    const innerConf: ViewStyle = {
-      width: this.props.imageWidth,
-      height: this.props.imageHeight,
-    };
-
-    if (scale < 1 && scale > 0) {
-      innerConf.transform = [
-        { scale },
-        { translateX: - (1 - scale) * this.props.imageWidth / (scale * 2) },
-        { translateY: - (1 - scale) * this.props.imageHeight / (scale * 2) }
-      ];
-    }
 
     const parentStyles = StyleSheet.flatten(this.props.style);
 
